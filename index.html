@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RandomWords</title>
     <style>
+        * {
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+        }
+
         body {
             background: #000;
             color: #FFF;
@@ -50,6 +58,8 @@
 
         if (words.length > 1) {
             wordElem.innerHTML = words.shift();
+        } else {
+            wordElem.innerHTML = "Please refresh"
         }
     }
 
