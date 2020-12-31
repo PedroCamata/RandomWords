@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomWords</title>
+    <style>
+        body {
+            background: #000;
+            color: #FFF;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        #word {
+            padding: 30vh 10vw;
+            font-size: 3rem;
+        }
+
+        #footer {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="instructions">
+        click or touch for the next word
+    </div>
+    <div id="word">
+        Word
+    </div>
+    <div id="footer">
+        Made by <a href="https://github.com/PedroCamata/RandomWords">Pedro Camata Andreon</a>
+    </div>
+</body>
+
+<script src="words.js"></script>
+<script>
+    words = shuffle(words);
+    nextWord();
+
+    document.addEventListener("click", function (e) {
+        nextWord();
+    });
+
+    function nextWord() {
+        let wordElem = document.getElementById("word");
+
+        if (words.length > 1) {
+            wordElem.innerHTML = words.shift();
+        }
+    }
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+</script>
+
+</html>
